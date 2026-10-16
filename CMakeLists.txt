@@ -1,7 +1,6 @@
 cmake_minimum_required(VERSION 3.25)
 project(BwowPitch2 VERSION 1.0.0)
 
-# Static MSVC runtime: no Visual C++ Redistributable needed on the target machine.
 set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 
 include(FetchContent)
@@ -24,6 +23,8 @@ juce_add_plugin(BwowPitch2
     PRODUCT_NAME "Bwow Pitch 2"
     COPY_PLUGIN_AFTER_BUILD FALSE)
 
+juce_generate_juce_header(BwowPitch2)
+
 target_sources(BwowPitch2 PRIVATE
     Source/PluginProcessor.cpp
     Source/PluginEditor.cpp)
@@ -36,8 +37,8 @@ target_link_libraries(BwowPitch2
     PRIVATE juce::juce_audio_utils
     PUBLIC juce::juce_recommended_config_flags juce::juce_recommended_warning_flags)
 
-# Offline DSP test driver (JUCE-free) used by tests/run_tests.py
 add_executable(core_test tests/core_test.cpp)
 target_compile_features(core_test PRIVATE cxx_std_17)
-set_target_properties(core_test PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/tests"
+set_target_properties(core_test PROPERTIES
+    RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/tests"
     RUNTIME_OUTPUT_DIRECTORY_RELEASE "${CMAKE_SOURCE_DIR}/tests")
