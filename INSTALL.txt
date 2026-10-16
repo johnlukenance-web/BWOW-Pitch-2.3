@@ -1,0 +1,11 @@
+Bwow Pitch 2 - Windows x64 VST3 (REAPER)
+
+1. Copy the whole folder "Bwow Pitch 2.vst3" into:
+      C:\Program Files\Common Files\VST3\
+   (needs admin rights; alternatively add any folder you like under
+    REAPER > Options > Preferences > Plug-ins > VST > "Add path".)
+2. In REAPER: Options > Preferences > Plug-ins > VST > "Re-scan..." and choose
+   "Clear cache and re-scan VST paths for new plug-ins" (or hold Ctrl and click Re-scan).
+3. On the guitar DI track: FX > Add > search "Bwow Pitch 2" (VST3) and place it BEFORE the amp sim.
+4. Defaults: Amount 65 cents, Decay 143 ms, Trigger Sensitivity Auto. The orange dot lights on each detected pick.
+   The plug-in reports 10 ms latency to REAPER (delay compensation is automatic).
